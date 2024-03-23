@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { List } from "./list";
 import { Filter } from "./filter";
+import styled from "styled-components";
  
 export function App() {
   const [robotsList, setRobotsList] = useState([]);
@@ -26,10 +27,7 @@ export function App() {
   }, []);
 
   return (
-    <div className="app">
-      <div className="header">
-        <h1 className="headline white-text">Show me the list!</h1>
-      </div>
+    <Div>
       {errorMsg ? (
         <h1>{errorMsg}</h1>
       ) : isLoading ? (
@@ -40,6 +38,27 @@ export function App() {
           <List listData={robotsList} />
         </>
       )}
-    </div>
+    </Div>
   );
 }
+
+const Div = styled.div`
+  background: Cornsilk;
+  padding: 10rem 1.5rem 1.5rem;
+  border-radius: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0.4rem 1.5rem DimGrey;
+  position: relative;
+  min-width: 60rem;
+  /* height: 85vh; */
+
+  & > h1 {
+    font-family: "Expletus Sans";
+    font-size: 3.5rem;
+    font-weight: 400;
+    color: maroon;
+  }
+`;
